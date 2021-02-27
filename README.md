@@ -102,6 +102,3 @@ Thanks to
 [@socrat3](https://github.com/socrat3) and
 [Salvatore Crapanzano](https://www.salvatorecrapanzano.com/)
 that, before me, contributed to this code.
-
-
-

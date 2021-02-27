@@ -62,6 +62,3 @@ py fec_ricevutedisposizione.py Codice_entratel_fiscoonline codice_PIN_entratel_f
 py fec_trasfrontalieremesse.py Codice_entratel_fiscoonline codice_PIN_entratel_fiscoonline password_fiscoonline codice_fiscale_studio_intermediario 01012020 31032020 CF_cliente Partita_IVA_cliente 1
 
 py fec_ricevute.py Codice_entratel_fiscoonline codice_PIN_entratel_fiscoonline password_fiscoonline codice_fiscale_studio_intermediario 01012020 31032020 CF_cliente Partita_IVA_cliente 1
-
-
-
