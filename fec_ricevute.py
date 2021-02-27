@@ -7,7 +7,7 @@ from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 import re
 import time
-from datetime import timedelta, datetime, tzinfo, timezone
+from datetime import datetime
 import sys
 import pytz
 import json

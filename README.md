@@ -1,3 +1,14 @@
+# FeCscraper
+
+## Configuration
+
+Dependencies are defined in `requirements.txt`.
+In order to install them with `pip`, just run:
+
+```shell
+$ pip install -r requirements
+```
+
 # Downloader Fatture elettroniche e i modelli f24 bolli
 
 Progetto derivato da FeCscraper di Pizzillo e modificato da Salvatore Crapanzano https:\\www.salvatorecrapanzano.com

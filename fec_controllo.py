@@ -10,10 +10,10 @@ import re
 import sys
 import pytz
 import json
-import os
-import base64
 import time
-from datetime import timedelta, datetime, tzinfo, timezone
+from datetime import datetime
+
+
 def unixTime():
     dt = datetime.now(tz=pytz.utc)
     return str(int(dt.timestamp() * 1000))
