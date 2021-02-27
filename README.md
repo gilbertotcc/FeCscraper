@@ -1,67 +1,104 @@
-# Downloader Fatture elettroniche e i modelli f24 bolli
+# FeCscraper
 
-Progetto derivato da FeCscraper di Pizzillo e modificato da Salvatore Crapanzano https:\\www.salvatorecrapanzano.com
+This repository contains a collection of utilities to fetch data from the
+[Fatture e Corrispettivi](https://ivaservizi.agenziaentrate.gov.it/portale/)
+website by Agenzia delle Entrate.
 
-py fec_emesse_dylog.py Codice_entratel_fiscoonline codice_PIN_entratel_fiscoonline password_fiscoonline codice_fiscale_studio_intermediario 01012020 31032020 CF_cliente Partita_IVA_cliente
+Originally, this repository has been created by
+[@claudiopizzillo](https://github.com/claudiopizzillo/FeCscraper) and forked by
+[@socrat3](https://github.com/socrat3/FeCscraper).
+The version of the code within this repository is a fork of the code updated by
+@socrat3.
 
-py fec_ricevutedisposizione.py Codice_entratel_fiscoonline codice_PIN_entratel_fiscoonline password_fiscoonline codice_fiscale_studio_intermediario 01012020 31032020 CF_cliente Partita_IVA_cliente 1
+For more information see also old README file at [README-old.md](README-old.md).
 
-py fec_trasfrontalieremesse.py Codice_entratel_fiscoonline codice_PIN_entratel_fiscoonline password_fiscoonline codice_fiscale_studio_intermediario 01012020 31032020 CF_cliente Partita_IVA_cliente 1
+## Configuration
 
-py fec_ricevute.py Codice_entratel_fiscoonline codice_PIN_entratel_fiscoonline password_fiscoonline codice_fiscale_studio_intermediario 01012020 31032020 CF_cliente Partita_IVA_cliente 1
+Dependencies are defined in `requirements.txt` and can be installed with `pip`;
+just run:
 
+```shell
+$ pip install -r requirements.txt
+```
 
-Script per automatizzare il download delle fatture elettroniche e i bolli e le fatture transfrontaliere e le fatture a disposizione usando il servizio Fatture e Corrispettivi. 
+## Usage
 
-Scarica:
-a) le fatture emesse e ricevute per data di emissione e per data do ricezione (incorpora le modifiche della AdE di febbraio 2020)
-b) modello f24 dei bolli
-c) le fatture a disposizione
+The `scripts` directory contains the scripts to fetch data from Fatture e
+Corrispettivi.
+In the following, examples on how to run them.
 
-Vi consiglio di eseguire lo script per il download delle fatture elettroniche ricevute dopo l'esecuzione dello script fatture a disposizione.
+> *:warning: If not specified, dates use `DDMMYYYY` format.*
 
-Dipendenze Librerie da installare via pip: requests e pytz.
+### fe.py
 
-Dati di input in ordine:
+```shell
+$ python scripts/python fec.py \
+    <FISCAL_CODE> \
+    <PIN> <PASSWORD> \
+    <VAT_NUMBER> \
+    <DATE_FROM> <DATE_TO>
+```
 
-CF (Codice fiscale o codice Entratel dell'intermediario commercialista o dello studio associato o del contribuente) di FeC.
-PIN di FeC.
-Password di FeC.
-Codice Fiscale # indicare il cf del cliente o cf del soggetto intermediario appartenente allo studio associato
-Data dal
-Data al
-cf cliente # ripete il cf del cliente, 
-piva cliente
-[1/2] solo per le fatture ricevute scaricamento per data di ricezione e/o emissione  # 1 per data di ricezione 2 per data di emissione
+### fec_emesse_dylog.py
 
-Nella sottocartella contenente il cf del contribuente troverai le tue FE e i relativi metadati.
+```shell
+$ python scripts/fec_emesse_dylog.py \
+    <Codice_entratel_fiscoonline> \
+    <codice_PIN_entratel_fiscoonline> \
+    <password_fiscoonline> \
+    <codice_fiscale_studio_intermediario> \
+    <DATE_FROM> <DATE_TO> \
+    <CF_cliente> \
+    <Partita_IVA_cliente> \
+    1
+```
 
-Per i bolli 
-CF (Codice fiscale o codice Entratel) di FeC.
-PIN di FeC.
-Password di FeC.
-Codice Fiscale
-Partita IVA
-Numero Trimestre es: 1 o 2 o 3 o 4 
-Anno Es. 2020
+### fec_ricevutedisposizione.py
 
-att.ne per funzionare la data di scaricamento devi essere antecedente o uguale alla data di pagamento
+```shell
+$ python scripts/fec_ricevutedisposizione.py \
+    <Codice_entratel_fiscoonline> \
+    <codice_PIN_entratel_fiscoonline> \
+    <password_fiscoonline> \
+    <codice_fiscale_studio_intermediario> \
+    <DATE_FROM> <DATE_TO> \
+    <CF_cliente> \
+    <Partita_IVA_cliente> \
+    1
+```
 
-Ci sono diverse modalitù di accesso, da madificare direttamente nel file
-a) me stesso
-b) incaricati singoli professionisti
-c) incaricati professionisti che fanno parte di uno studio associato
+### fec_trasfrontalieremesse.py
 
-SE NON FUNZIONA, PER VOI DOVETE VEDERE QUESTA PARTE DEL CODICE. CON LO SCRIPT CHE HO CARICATO. FUNZIONA!
+```shell
+$ python scripts/fec_trasfrontalieremesse.py \
+    <Codice_entratel_fiscoonline> \
+    <codice_PIN_entratel_fiscoonline> \
+    <password_fiscoonline> \
+    <codice_fiscale_studio_intermediario> \
+    <DATE_FROM> <DATE_TO> \
+    <CF_cliente> \
+    <Partita_IVA_cliente> \
+    1
+```
 
-Esempio riga comando:
-py fec_emesse_dylog.py Codice_entratel_fiscoonline codice_PIN_entratel_fiscoonline password_fiscoonline codice_fiscale_studio_intermediario 01012020 31032020 CF_cliente Partita_IVA_cliente
+### fec_ricevute.py
 
-py fec_ricevutedisposizione.py Codice_entratel_fiscoonline codice_PIN_entratel_fiscoonline password_fiscoonline codice_fiscale_studio_intermediario 01012020 31032020 CF_cliente Partita_IVA_cliente 1
+```shell
+$ python scripts/fec_ricevute.py \
+    <Codice_entratel_fiscoonline> \
+    <codice_PIN_entratel_fiscoonline> \
+    <password_fiscoonline> \
+    <codice_fiscale_studio_intermediario> \
+    <DATE_FROM> <DATE_TO> \
+    <CF_cliente> \
+    <Partita_IVA_cliente> \
+    1
+```
 
-py fec_trasfrontalieremesse.py Codice_entratel_fiscoonline codice_PIN_entratel_fiscoonline password_fiscoonline codice_fiscale_studio_intermediario 01012020 31032020 CF_cliente Partita_IVA_cliente 1
+## Acknowledge
 
-py fec_ricevute.py Codice_entratel_fiscoonline codice_PIN_entratel_fiscoonline password_fiscoonline codice_fiscale_studio_intermediario 01012020 31032020 CF_cliente Partita_IVA_cliente 1
-
-
-
+Thanks to
+[@claudiopizzillo](https://github.com/claudiopizzillo/),
+[@socrat3](https://github.com/socrat3) and
+[Salvatore Crapanzano](https://www.salvatorecrapanzano.com/)
+that, before me, contributed to this code.
